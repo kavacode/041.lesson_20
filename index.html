@@ -1,56 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Heroes</title>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-	<form class="heroes__form" id="heroesForm">
-		<label>
-			Hero name: <input type="text" placeholder="Iron Man" value="Iron Man" data-name="heroName">
-		</label>
-		<label>
-			Comics: <select id="comicsSelect" data-name="heroComics">
-				 <option value="Marvel">Marvel</option>
-				 <option value="DC">DC</option>
-				 <option value="Comix Zone">Comix Zone</option>
-			</select>
-	  </label>
-		<label>
-			Favourite: 
-			<div class="heroFavouriteInput">
-				<input type="checkbox" data-name="heroFavourite">
-			</div>
-		</label>
-
-		<button>Add Hero</button>
-	</form>
-
-	<table class="heroes__table" id="heroesTable">
-		<thead>
-			<tr>
-				<th>Hero name</th>
-				<th>Comics</th>
-				<th>Favourite</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Iron Man</td>
-				<td>Marvel</td>
-				<td>
-					<label class="heroFavouriteInput">
-						Favourite: <input type="checkbox">
-					</label>
-				</td>
-				<td><button>Delete</button></td>
-			</tr>
-		</tbody>
-	</table>
-	<script src="js/script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heroes</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <form class="heroes__form" id="heroesForm">
+      <label>
+        Hero name:
+        <input
+          type="text"
+          placeholder="Iron Man"
+          value="Iron Man"
+          data-name="heroName"
+        />
+      </label>
+      <label>
+        Comics:
+        <select id="comicsSelect" data-name="heroComics"></select>
+      </label>
+      <label>
+        Favourite:
+        <div class="heroFavouriteInput">
+          <input type="checkbox" data-name="heroFavourite" />
+        </div>
+      </label>
+      <button>Add Hero</button>
+    </form>
+    <table class="heroes__table" id="heroesTable">
+      <thead>
+        <tr>
+          <th>Hero name</th>
+          <th>Comics</th>
+          <th>Favourite</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="js/script.js"></script>
+  </body>
 </html>

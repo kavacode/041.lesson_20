@@ -18,11 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
       addHero();
     });
 
-  document.querySelector(".add-hero").addEventListener("click", function () {
-    document.querySelector(".heroes__form").reset();
-    document.querySelector(".heroes__form").style.display = "block";
-  });
-
   fetch(API_UNIVER, {
     method: METHOD.GET,
   })
@@ -117,7 +112,7 @@ function addRowToTable(table, hero) {
   favouriteCell.innerHTML = `<label class="heroFavouriteInput">Лучший: <input type="checkbox" ${
     hero.favourite ? "checked" : ""
   } onchange="updateHero('${hero.id}', this)"></label>`;
-  actionsCell.innerHTML = `<button onclick="deleteHero('${hero.id}')">Удалить</button> <button onclick="editHero('${hero.id}')">Редактировать</button>`;
+  actionsCell.innerHTML = `<button onclick="deleteHero('${hero.id}')">Удалить</button>`;
 }
 
 function updateHero(heroId, checkbox) {
@@ -146,44 +141,7 @@ function deleteHero(heroId) {
           `Ошибка при удалении героя: ${response.status} ${response.statusText}`
         );
       }
-      const row = document.querySelector(
-        `#heroesTable tbody tr[data-id="${heroId}"]`
-      );
-      if (row) {
-        row.parentNode.removeChild(row);
-        document.querySelector(".heroes__form").reset();
-        getHeroes();
-      }
+      getHeroes();
     })
     .catch((error) => console.error(error));
-}
-
-HTMLElement.prototype.containsText = function (text) {
-  return this.innerText.includes(text);
-};
-
-function editHero(heroId) {
-  fetch(`${API}/${heroId}`, {
-    method: METHOD.GET,
-  })
-    .then((response) => response.json())
-    .then((hero) => {
-      document.querySelector('[data-name="heroName"]').value = hero.name;
-      document.querySelector('[data-name="heroComics"]').value = hero.comics;
-      document.querySelector('[data-name="heroFavourite"]').checked =
-        hero.favourite;
-
-      document.querySelector(".heroes__form").style.display = "block";
-
-      document.querySelector(".heroes__form").onsubmit = function (e) {
-        e.preventDefault();
-        updateHero(
-          heroId,
-          document.querySelector('[data-name="heroFavourite"]')
-        );
-      };
-    })
-    .catch((error) =>
-      console.error("Ошибка при загрузке данных о герое:", error)
-    );
 }
